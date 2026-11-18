@@ -9,9 +9,9 @@ This repository is the source of truth for Edwin Wakibari's engineering portfoli
 
 ```text
 apps/
-  web/                 Next.js portfolio application (introduced in a later phase)
+  web/                 Next.js portfolio application
 services/
-  sentinel-api/        Sentinel security evaluation API (introduced in a later phase)
+  sentinel-api/        Sentinel security evaluation API (planned for a later phase)
 docs/
   architecture/        System architecture and boundaries
   decisions/           Architecture Decision Records (ADRs)
@@ -25,28 +25,42 @@ docs/
 - **Incremental delivery:** keep changes reviewable and preserve a clear history.
 - **Honest limitations:** communicate what a control does not guarantee.
 
-## Planned technology
+## Technology
 
-| Area | Direction |
+| Area | Implementation |
 |---|---|
 | Portfolio | Next.js App Router, React, TypeScript and Tailwind CSS |
-| Security service | Python, FastAPI, Pydantic and pytest |
-| Quality gates | ESLint, TypeScript checks, pytest and GitHub Actions |
+| Security service | Python, FastAPI, Pydantic and pytest (planned; separate phase) |
+| Quality gates | ESLint, TypeScript checks, pytest and GitHub Actions (CI introduced in a later phase) |
 | Development model | Local-first; web application and Sentinel API run as separate processes |
 
-Technology choices are recorded in [Architecture Decision Records](docs/decisions/). This foundation does not yet include the application implementation, deployment configuration or a public Sentinel API.
+Technology choices are recorded in [Architecture Decision Records](docs/decisions/).
 
 ## Local development
 
-The application and service directories are intentionally placeholders at this stage. Their setup instructions will be added with their respective implementation changes. Do not assume that the repository is runnable as an application yet.
+```bash
+cd apps/web
+npm ci
+npm run dev
+```
+
+Run the web quality checks from `apps/web`:
+
+```bash
+npm run lint
+npm run typecheck
+npm run build
+```
+
+The portfolio routes are `/`, `/engineering`, `/research`, `/security-lab`, `/engineering-notes` and `/about`. The Sentinel API is not yet integrated into the website or exposed as a public service.
+
+## Content integrity
+
+Project descriptions distinguish implemented prototypes, MVPs under hardening, project prototypes and work whose implementation evidence still needs review. Case studies should identify personal contribution separately from team work and include verification evidence and known limitations.
 
 ## Security and responsible disclosure
 
 Do not commit credentials, API keys, personal data, production logs or runtime audit records. If you identify a security issue in this repository, avoid publishing exploit details that could affect real systems; contact the repository owner privately.
-
-## Project status
-
-The repository foundation is being established incrementally. Project descriptions and case studies will be limited to work supported by source code, tests, demonstrations or clearly identified research documentation.
 
 ## License
 
