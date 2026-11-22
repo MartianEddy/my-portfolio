@@ -1,0 +1,2 @@
+import Link from 'next/link';
+export default function NotFound() { return <main id="main-content" className="container" style={{padding:'8rem 0'}}><div className="eyebrow">404 / NOT FOUND</div><h1 className="display">This route<br /><em>doesn&apos;t exist.</em></h1><p className="lead">The page may have moved, or the address may be incorrect.</p><div className="button-row"><Link className="button button-dark" href="/">Return home</Link></div></main>; }
